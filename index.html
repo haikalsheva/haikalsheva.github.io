@@ -120,20 +120,20 @@
         </div>
         <div class="row justify-content-center">
           <div class="col-md-6">
-            <form>
+      <form name="wpu-contact form">
              
               <div class="mb-3">
                 <label for="Name" class="form-label">Nama Lengkap</label>
-                <input type="text" class="form-control" id="name" aria-describedby="name">
+                <input type="text" class="form-control" id="name" aria-describedby="name" name="nama"/>
               
       
               <div class="mb-3">
                 <label for="emsil" class="form-label">Email </label>
-                <input type="email" class="form-control" id="email" aria-describedby="email">
+                <input type="email" class="form-control" id="email" aria-describedby="email" name="email"/>
                 </div>
                 <div class="mb-3">
                   <label for="Pesan" class="form-label">Pesan</label>
-                  <textarea class="form-control" id="Pesan" rows="3"></textarea>
+                  <textarea class="form-control" id="Pesan" rows="3" name="pesan"></textarea>
                 </div>
               
       
@@ -152,5 +152,17 @@
 
   <!-- akhir footer -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  
+    <script>
+      const scriptURL = '<https://script.google.com/macros/s/AKfycbzAhrUa85QO1D67UQVQUZvd9jKpCB9Doc_UpYDXJwMCgI8t_xbkt524aLl4eHx8ZGQ31g/exec>'
+      const form = document.forms['wpu-contact form']
+    
+      form.addEventListener('submit', e => {
+        e.preventDefault()
+        fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+          .then(response => console.log('Success!', response))
+          .catch(error => console.error('Error!', error.message))
+      })
+    </script>
   </body>
 </html>
